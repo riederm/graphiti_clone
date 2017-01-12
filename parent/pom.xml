@@ -3,41 +3,110 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>Graphiti Parent</name>
+	<name>Parent</name>
 	<groupId>org.eclipse.graphiti</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.12.0-SNAPSHOT</version>
+	<version>0.14.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.22.0</tycho-version>
-		<platform-site>http://download.eclipse.org/eclipse/updates/${platform-path}</platform-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/${orbit-version}/repository/</orbit-site>
-		<gef-site>http://download.eclipse.org/tools/gef/updates/${gef-path}</gef-site>
-		<emf-site>http://download.eclipse.org/modeling/emf/emf/updates/${emf-path}</emf-site>
-		<emf-transactions-site>http://download.eclipse.org/modeling/emf/transaction/updates/${emf-transactions-path}</emf-transactions-site>
-		<emf-validation-site>http://download.eclipse.org/modeling/emf/validation/updates/${emf-validation-path}</emf-validation-site>
-		<swtbot-site>http://download.eclipse.org/technology/swtbot/${swtbot-path}</swtbot-site>
+		<tycho-version>0.24.0</tycho-version>
+		<tycho-extras-version>${tycho-version}</tycho-extras-version>
+		<jboss-tycho-plugins-version>0.22.0</jboss-tycho-plugins-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<platform-site>http://download.eclipse.org/eclipse/updates/4.7milestones/S-4.7M3-201610270700/</platform-site>
+		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20161021172207/repository/</orbit-site>
+		<gef-site>http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/</gef-site>
+		<emf-site>http://download.eclipse.org/modeling/emf/emf/updates/2.12/</emf-site>
+		<emf-transactions-site>http://download.eclipse.org/modeling/emf/transaction/updates/releases/</emf-transactions-site>
+		<emf-validation-site>http://download.eclipse.org/modeling/emf/validation/updates/releases/</emf-validation-site>
+		<swtbot-site>http://download.eclipse.org/technology/swtbot/milestones/neon-ur1-rc4/</swtbot-site>
 		<license-site>http://download.eclipse.org/cbi/updates/license/</license-site>
 	</properties>
 
 	<profiles>
 		<profile>
-			<id>mars</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<platform-path>4.5milestones/S-4.5RC2a-201505222000/</platform-path>
-				<orbit-version>R20150519210750</orbit-version>
-				<gef-path>milestones/</gef-path>
-				<emf-path>2.11milestones/</emf-path>
-				<emf-transactions-path>milestones/S201505060251/</emf-transactions-path>
-				<emf-validation-path>milestones/S201505060134/</emf-validation-path>
-				<swtbot-path>snapshots/</swtbot-path>
-			</properties>
+			<id>eclipse-signing</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<includePackedArtifacts>true</includePackedArtifacts>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200a-plugin</artifactId>
+						<version>${tycho-extras-version}</version>
+						<executions>
+							<execution>
+								<id>pack200-normalize</id>
+								<goals>
+									<goal>normalize</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<version>1.1.2</version>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200b-plugin</artifactId>
+						<version>${tycho-extras-version}</version>
+						<executions>
+							<execution>
+								<id>pack200-pack</id>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>p2-metadata</id>
+								<goals>
+									<goal>p2-metadata</goal>
+								</goals>
+								<phase>verify</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<defaultP2Metadata>false</defaultP2Metadata>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.eclipse.org.cbi-releases</id>
+			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<repositories>
 		<repository>
@@ -84,6 +153,31 @@
 
 	<modules>
 		<module>../plugins/org.eclipse.graphiti.mm</module>
+		<module>../plugins/org.eclipse.graphiti</module>
+		<module>../plugins/org.eclipse.graphiti.ui</module>
+		<module>../plugins/org.eclipse.graphiti.pattern</module>
+		<module>../plugins/org.eclipse.graphiti.tools.newprojectwizard</module>
+		<module>../plugins/org.eclipse.graphiti.export.batik</module>
+		<module>../examples/org.eclipse.graphiti.examples.common</module>
+		<module>../examples/org.eclipse.graphiti.examples.tutorial</module>
+		<module>../examples/org.eclipse.graphiti.examples.chess</module>
+		<module>../examples/org.eclipse.graphiti.examples.composite</module>
+		<module>../examples/org.eclipse.graphiti.examples.filesystem.mm</module>
+		<module>../examples/org.eclipse.graphiti.examples.filesystem</module>
+		<module>../examples/org.eclipse.graphiti.ui.capabilities</module>
+		<module>../examples/org.eclipse.graphiti.doc</module>
+		<module>../features/org.eclipse.graphiti.feature</module>
+		<module>../features/org.eclipse.graphiti.feature.examples</module>
+		<module>../features/org.eclipse.graphiti.feature.tools</module>
+		<module>../features/org.eclipse.graphiti.sdk.feature</module>
+		<module>../features/org.eclipse.graphiti.export.feature</module>
+		<module>../features/org.eclipse.graphiti.sdk.plus.feature</module>
+		<module>../features/org.eclipse.graphiti.site</module>
+		<module>../tests/org.eclipse.graphiti.tests</module>
+		<module>../tests/org.eclipse.graphiti.ui.tests</module>
+		<module>../tests/org.eclipse.graphiti.testtool.ecore</module>
+		<module>../tests/org.eclipse.graphiti.testtool.sketch</module>
+		<module>../tests/org.eclipse.graphiti.bot.tests</module>
 	</modules>
 
 	<build>
@@ -100,6 +194,53 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<format>yyyyMMddHHmm</format>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
 				</configuration>
 			</plugin>
 		</plugins>

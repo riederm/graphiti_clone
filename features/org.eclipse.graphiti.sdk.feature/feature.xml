@@ -34,6 +34,10 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
+   <license url="%licenseURL">
+      %license
+   </license>
+
    <includes
          id="org.eclipse.graphiti.feature"
          version="0.0.0"/>
@@ -43,19 +47,7 @@ http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.graphiti.source.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.graphiti.feature.examples.source"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.graphiti.feature.tools"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.graphiti.feature.tools.source"
          version="0.0.0"/>
 
 </feature>

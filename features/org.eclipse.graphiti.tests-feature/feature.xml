@@ -35,6 +35,10 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
+   <license url="%licenseURL">
+      %license
+   </license>
+
    <url>
       <update label="%graphitiTestUpdateSiteName" url="http://download.eclipse.org/modeling/graphiti/updates/"/>
       <discovery label="%graphitiTestUpdateSiteName" url="http://download.eclipse.org/modeling/graphiti/updates/"/>

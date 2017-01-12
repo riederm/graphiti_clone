@@ -32,6 +32,10 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
+   <license url="%licenseURL">
+      %license
+   </license>
+
    <plugin
          id="org.eclipse.graphiti.tools.newprojectwizard"
          download-size="0"
