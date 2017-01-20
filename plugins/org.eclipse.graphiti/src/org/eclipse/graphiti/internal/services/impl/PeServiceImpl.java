@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2016 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@
  *    mwenz - Bug 417454 - Proposal to add an additional createDiagram() method to IPeCreateService
  *    Moritz Eysholdt,  Jerome Sivadier (mwenz) - Bug 433998 - peService.deletePictogramElement() is extremely slow
  *    mwenz - Bug 509122 - NullPointerException in PeServiceImpl.getLocationInfo
+ *    mwenz - Bug 510490 - NullPointerException in PeServiceImpl.getGaBoundsForAnchor
  *
  * </copyright>
  *
@@ -862,15 +863,18 @@ public final class PeServiceImpl implements IPeService {
 	public IRectangle getGaBoundsForAnchor(Anchor anchor) {
 		IRectangle ret = new RectangleImpl(0, 0);
 
-		GraphicsAlgorithm parentGa = anchor.getParent().getGraphicsAlgorithm();
-		if (parentGa != null) {
-			if (anchor.getReferencedGraphicsAlgorithm() != null) {
+		AnchorContainer parent = anchor.getParent();
+		if (parent != null) {
+			GraphicsAlgorithm parentGa = parent.getGraphicsAlgorithm();
+			if (parentGa != null) {
 				GraphicsAlgorithm referencedGa = anchor.getReferencedGraphicsAlgorithm();
-				int relX = getRelativeX(referencedGa, parentGa);
-				int relY = getRelativeY(referencedGa, parentGa);
-				ret = new RectangleImpl(relX, relY, referencedGa.getWidth(), referencedGa.getHeight());
-			} else {
-				ret = new RectangleImpl(0, 0, parentGa.getWidth(), parentGa.getHeight());
+				if (referencedGa != null) {
+					int relX = getRelativeX(referencedGa, parentGa);
+					int relY = getRelativeY(referencedGa, parentGa);
+					ret = new RectangleImpl(relX, relY, referencedGa.getWidth(), referencedGa.getHeight());
+				} else {
+					ret = new RectangleImpl(0, 0, parentGa.getWidth(), parentGa.getHeight());
+				}
 			}
 		}
 
