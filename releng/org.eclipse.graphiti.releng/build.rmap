@@ -55,7 +55,7 @@
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/tools/orbit/downloads/drops/S20161021172207/repository/">
+      <rm:uri format="{0}/tools/orbit/downloads/drops/S20170120205402/repository/">
         <bc:propertyRef key="eclipse.downloads"/>
       </rm:uri>
     </rm:provider>
@@ -64,7 +64,7 @@
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/eclipse/updates/4.7milestones/S-4.7M3-201610270700/">
+      <rm:uri format="{0}/eclipse/updates/4.7milestones/S-4.7M5-201701261030/">
         <bc:propertyRef key="eclipse.downloads"/>
       </rm:uri>
     </rm:provider>
@@ -73,7 +73,7 @@
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/modeling/emf/emf/updates/2.12/">
+      <rm:uri format="{0}/modeling/emf/emf/updates/2.13milestones/">
         <bc:propertyRef key="eclipse.downloads"/>
       </rm:uri>
     </rm:provider>
