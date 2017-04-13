@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2011, 2015 SAP AG.
+ * Copyright (c) 2011, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *    pjpaulin - Bug 352120 - Now uses IDiagramContainerUI interface
  *    mwenz - Bug 433779 - DiagramBehaviour.setInput() is not extensible
  *    mwenz - Bug 459386 - Refresh Connection when getDiagramBehavior().refreshRenderingDecorators(PEInstance) is called
+ *    Tamas Borbas - Bug 515645 - Missing API to turn off auto refresh
  *
  * </copyright>
  *
@@ -60,6 +61,8 @@ public class DefaultRefreshBehavior {
 	protected final DiagramBehavior diagramBehavior;
 
 	private RefreshPerformanceCache refreshPerformanceCache = new RefreshPerformanceCache();
+
+	private boolean autoResfresh = true;
 
 	/**
 	 * Creates a new standard refresh behaviour for a Graphiti diagram editor.
@@ -278,12 +281,27 @@ public class DefaultRefreshBehavior {
 	 * Returns if auto refresh is enabled or not. In case it is enabled the
 	 * editor will automatically react on EMF resource changes.
 	 * <p>
-	 * The default implementation here simply returns <code>true</code>.
+	 * By default the auto refresh is turned on so this method returns
+	 * <code>true</code>.
 	 * 
 	 * @return true, if is auto refresh
 	 */
 	public boolean isAutoRefresh() {
-		return true;
+		return autoResfresh;
+	}
+
+	/**
+	 * Auto refresh can be enabled or disabled with this function.In case it is
+	 * enabled the editor will automatically react on EMF resource changes.
+	 * <p>
+	 * By default the auto refresh is turned on.
+	 * 
+	 * @param autoRefresh
+	 *            the new value of auto refresh
+	 * @since 0.14
+	 */
+	public void setAutoRefresh(boolean autoRefresh) {
+		this.autoResfresh = autoRefresh;
 	}
 
 	/**
