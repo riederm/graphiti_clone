@@ -8,5 +8,7 @@
     <cq:advisorNode namePattern="^org\.apache\.batik\.util\.gui\.source*" skipComponent="true"/>
     <cq:advisorNode namePattern="^org\.apache\.batik\.css\.source*" skipComponent="true"/>
     <cq:advisorNode namePattern="^org\.w3c\.dom\.smil\.source*" skipComponent="true"/>
+    <cq:advisorNode namePattern="^org\.eclipse\.pde\.ds\.lib*" skipComponent="true"/>
+    <cq:advisorNode namePattern="^org\.eclipse\.pde\.ds1_2\.lib" skipComponent="true"/>
     <cq:advisorNode namePattern=".*" useMaterialization="false" useTargetPlatform="false"/>
 </cq:componentQuery>
