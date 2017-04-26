@@ -123,6 +123,7 @@ public class PluginWizardTests extends AbstractGFTests {
 		IPluginModelBase newPluginModel = PluginRegistry.findModel(newProject);
 		counter = 0;
 		while ((newPluginModel == null || newPluginModel.getPluginBase() == null) && counter < 20) {
+			newPluginModel = PluginRegistry.findModel(newProject);
 			counter++;
 			Thread.sleep(1000);
 		}
