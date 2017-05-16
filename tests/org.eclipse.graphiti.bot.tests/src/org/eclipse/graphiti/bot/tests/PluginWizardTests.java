@@ -92,7 +92,7 @@ public class PluginWizardTests extends AbstractGFTests {
 		// Confirm perspective switch
 		shell = bot.shell("Open Associated Perspective?");
 		shell.activate();
-		bot.button("Yes").click();
+		bot.button("Open Perspective").click();
 
 		Thread.sleep(2000);
 
