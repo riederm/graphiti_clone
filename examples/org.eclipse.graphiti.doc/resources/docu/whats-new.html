@@ -34,161 +34,14 @@ table.news tr td.content {
 
 <body>
 
-	<h1>Graphiti &quot;New and Noteworthy&quot; for Eclipse Oxygen</h1>
-	<p>Last revised Mai 16, 2017</p>
+	<h1>Graphiti &quot;New and Noteworthy&quot; for Eclipse Photon</h1>
+	<p>Last revised August 08, 2017</p>
 	<p>This document describes the new development topics that were
-		addressed during the milestones towards the release 0.14.0 within the
-		Oxygen release train.</p>
+		addressed during the milestones towards the release 0.15.0 within the
+		Photon release train.</p>
 	<!-- --------------------------------- Table ----------------------------------------- -->
 	<table border="0" cellpadding="10" cellspacing="0" class="news"
 		width="600">
-		<!-- ---------------------------------------- M7 ------------------------------- -->
-		<tr>
-			<td colspan="2">
-				<h2>M7</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">The main focus for this milestone has been set
-				on improvements.</td>
-		</tr>
-		<tr id="bug 515645">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=515645">Public
-					API to modify auto refresh of DefaultRefreshBehavior</a></td>
-			<td class="content">Graphiti now offers a new API to switch the
-				auto refresh of the editor on or off.</td>
-		</tr>
-		<!-- ---------------------------------------- M6 ------------------------------- -->
-		<tr>
-			<td colspan="2">
-				<h2>M6</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">The main focus for this milestone has been set
-				on project improvements.</td>
-		</tr>
-		<tr id="bug 421626">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=421626">Graphiti
-					should switch to a Maven-based build</a></td>
-			<td class="content">Graphiti now uses a Maven / CBI-based build.</td>
-		</tr>
-		<!-- ---------------------------------------- M5 ------------------------------- -->
-		<tr>
-			<td colspan="2">
-				<h2>M5</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">The main focus for this milestone has been set
-				on fixing bugs.</td>
-		</tr>
-		<tr id="bug 508133">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=508133">Use
-					Font Registry for Tooltips</a></td>
-			<td class="content">Graphiti now uses a font registry also for
-				tooltips.</td>
-		</tr>
-		<tr id="bug 505659">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=505659">Bug
-					505659</a></td>
-			<td class="content">A potential NullPointerException while
-				creating the context menu entry from rename has been fixed.</td>
-		</tr>
-		<tr id="bug 509122">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=509122">Bug
-					509122</a></td>
-			<td class="content">A potential NullPointerException while
-				getting location information has been fixed.</td>
-		</tr>
-		<tr id="bug 510490">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=510490">Bug
-					510490</a></td>
-			<td class="content">A potential NullPointerException while
-				getting the bounds for an anchor has been fixed.</td>
-		</tr>
-		<!-- ---------------------------------------- M3 ------------------------------- -->
-		<tr>
-			<td colspan="2">
-				<h2>M3</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">The main focus for this milestone has been set
-				on fixing bugs.</td>
-		</tr>
-		<tr id="bug 465675">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=465675">Improve
-					SWT Font Management</a></td>
-			<td class="content">Graphiti now comes with a font registry that
-				manages the fonts used in a diagram and allows reuse of the fonts in
-				case they are used more than once. This was implemented in a very
-				similar way to what was already in place for SWL colors.</td>
-		</tr>
-		<tr id="bug 497669">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=497669">Bug
-					497669</a></td>
-			<td class="content">A potential IndexOutOfBoundsException has
-				been fixed in the path creation of polylines.</td>
-		</tr>
-		<tr id="bug 502049">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=502049">Bug
-					502049</a></td>
-			<td class="content">A bug in the space calculation of the
-				context button pads that causes waste of space in some cases has
-				been fixed.</td>
-		</tr>
-		<tr id="bug 502091">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=502091">Bug
-					502091</a></td>
-			<td class="content">A potential NullPointerException in direct
-				editing has been fixed.</td>
-		</tr>
-		<!-- ---------------------------------------- M2 ------------------------------- -->
-		<tr>
-			<td colspan="2">
-				<h2>M2</h2>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">The main focus for this milestone has been set
-				on fixing bugs.</td>
-		</tr>
-		<tr id="bug 499428">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=499428">Bug
-					499428</a></td>
-			<td class="content">A potential NullPointerException in the in
-				the key handling of DefaultPaletteBehavior has been fixed.
-			</td>
-		</tr>
-		<tr id="bug 499720">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=499720">Bug
-					499720</a></td>
-			<td class="content">The DefaultConnectionEditPolicy now
-				correctly supports scrolling. Until now in case of scrolled diagrams
-				the positions might not have been mapped correctly.
-			</td>
-		</tr>
-		<tr id="bug 500581">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=500581">Bug
-					500581</a></td>
-			<td class="content">A potential NullPointerException in
-				disposing the DiagramBehavior has been fixed.
-			</td>
-		</tr>
 		<!-- ---------------------------------------- M1 ------------------------------- -->
 		<tr>
 			<td colspan="2">
@@ -197,22 +50,7 @@ table.news tr td.content {
 		</tr>
 		<tr>
 			<td colspan="2">The main focus for this milestone has been set
-				on fixing bugs.</td>
-		</tr>
-		<tr id="bug 497237">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=497237">Bug
-					497237</a></td>
-			<td class="content">A potential NullPointerException in the
-				disposal of the default marker behavior has been fixed.
-			</td>
-		</tr>
-		<tr id="bug 496822">
-			<td class="title"><a
-				href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=496822">Bug
-					496822</a></td>
-			<td class="content">A potential NullPointerException in the XY
-				layout when moving connection decorators has been fixed.</td>
+				on getting into the release train.</td>
 		</tr>
 	</table>
 	<!-- ---------------------------------------- END OF TABLE ------------------------------- -->
