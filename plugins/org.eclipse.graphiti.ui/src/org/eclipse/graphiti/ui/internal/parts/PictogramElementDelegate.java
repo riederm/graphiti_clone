@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2016 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@
  *    mwenz - Bug 464857 - Images created by GFImageFigure are not destroyed
  *    mwenz - Bug 481619 - Graphiti is not using custom PlatformGraphicsAlgorithm's layout manager; enforces XYLayout
  *    palldredge - Bug 465675 - Improve SWT Font management 
+ *    mwenz - Bug 522699 - NullPointerException in GefService.getConnectionPointAt
  * </copyright>
  *
  *******************************************************************************/
@@ -1425,6 +1426,9 @@ public class PictogramElementDelegate implements IPictogramElementDelegate {
 			// get relative point on connection-figure
 			ConnectionDecorator connectionDecorator = (ConnectionDecorator) pe;
 			Connection connection = connectionDecorator.getConnection();
+			if (connection == null) {
+				return;
+			}
 			Point pointAt = null;
 			double decoratorLocation = connectionDecorator.getLocation();
 			if (connectionDecorator.isLocationRelative()) {
