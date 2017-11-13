@@ -19,6 +19,7 @@
  *    Moritz Eysholdt,  Jerome Sivadier (mwenz) - Bug 433998 - peService.deletePictogramElement() is extremely slow
  *    mwenz - Bug 509122 - NullPointerException in PeServiceImpl.getLocationInfo
  *    mwenz - Bug 510490 - NullPointerException in PeServiceImpl.getGaBoundsForAnchor
+ *    mwenz - Bug 527192 - NullPointerException in PeServiceImpl.getRelativeToDiagramX
  *
  * </copyright>
  *
@@ -1232,10 +1233,13 @@ public final class PeServiceImpl implements IPeService {
 				}
 				shape = shape.getContainer();
 			}
-		} else {
+		} else if (shape != null) {
 			ConnectionDecorator decorator = (ConnectionDecorator) shape;
 			ILocation midpoint = getConnectionMidpoint(decorator.getConnection(), decorator.getLocation());
-			ret = decorator.getGraphicsAlgorithm().getX() + midpoint.getX();
+			GraphicsAlgorithm graphicsAlgorithm = decorator.getGraphicsAlgorithm();
+			if (midpoint != null && graphicsAlgorithm != null) {
+				ret = graphicsAlgorithm.getX() + midpoint.getX();
+			}
 		}
 		return ret;
 	}
