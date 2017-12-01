@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2011 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  *    SAP AG - initial API, implementation and documentation
  *    mwenz - Bug 327669 - removed dependencies to GEF internal stuff
  *    Felix Velasco (mwenz) - Bug 323351 - Enable to suppress/reactivate the speed buttons
+ *    mwenz - Bug 520392 - Hard coded error message when entering an empty string in direct editing
  *
  * </copyright>
  *
@@ -37,7 +38,6 @@ public class Messages extends NLS {
 	public static String DefaultDeleteFeature_3_xmsg;
 	public static String DefaultDeleteFeature_4_xmsg;
 	public static String DefaultDeleteFeature_5_xfld;
-	public static String DefaultDirectEditPolicy_0_xmsg;
 	public static String DefaultPersistencyBehavior_2;
 	public static String DefaultPersistencyBehavior_3;
 	public static String DefaultPersistencyBehavior_4;

@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2013 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@
  *    mwenz - Bug 397346 - Digram Editor loses focus on closing of MessageDialog in Graphiti 
  *    pjpaulin - Bug 352120 - Eliminated assumption that diagram is in an IEditorPart
  *    pjpaulin - Bug 352120 - Now uses IDiagramContainerUI interface
+ *    mwenz - Bug 520392 - Hard coded error message when entering an empty string in direct editing
  *
  * </copyright>
  *
@@ -34,7 +35,6 @@ import org.eclipse.graphiti.internal.command.DirectEditingFeatureCommandWithCont
 import org.eclipse.graphiti.internal.command.ICommand;
 import org.eclipse.graphiti.internal.util.LookManager;
 import org.eclipse.graphiti.ui.editor.IDiagramBehaviorUI;
-import org.eclipse.graphiti.ui.internal.Messages;
 import org.eclipse.graphiti.ui.internal.command.GefCommandWrapper;
 import org.eclipse.graphiti.ui.internal.config.IConfigurationProviderInternal;
 import org.eclipse.graphiti.ui.internal.parts.directedit.IDirectEditHolder;
@@ -82,19 +82,20 @@ public class DefaultDirectEditPolicy extends DirectEditPolicy {
 
 		CellEditor cellEditor = request.getCellEditor();
 		final String message = cellEditor.getErrorMessage();
+
+		IDirectEditHolder directEditHolder = ((GFDirectEditRequest) request).getDirectEditHolder();
+		IDirectEditingFeature directEditingFeature = directEditHolder.getDirectEditingFeature();
+		IDirectEditingContext directEditingContext = directEditHolder.getDirectEditingContext();
 		if (message != null && message.length() != 0) {
-			MessageDialog.openError(GraphitiUiInternal.getWorkbenchService().getShell(),
-					Messages.DefaultDirectEditPolicy_0_xmsg, message);
+			String notificationTitle = configurationProvider.getDiagramTypeProvider().getCurrentToolBehaviorProvider()
+					.getDirectEditingInvalidNotificationTitle(directEditingFeature, directEditingContext);
+			MessageDialog.openError(GraphitiUiInternal.getWorkbenchService().getShell(), notificationTitle, message);
 			if (configurationProvider.getDiagramContainer() != null
 					&& configurationProvider.getDiagramContainer().getWorkbenchPart() != null) {
 				configurationProvider.getDiagramContainer().getWorkbenchPart().setFocus();
 			}
 			return null;
 		}
-
-		final IDirectEditHolder directEditHolder = ((GFDirectEditRequest) request).getDirectEditHolder();
-		final IDirectEditingFeature directEditingFeature = directEditHolder.getDirectEditingFeature();
-		final IDirectEditingContext directEditingContext = directEditHolder.getDirectEditingContext();
 
 		String value = null;
 		IProposal acceptedProposal = null;
