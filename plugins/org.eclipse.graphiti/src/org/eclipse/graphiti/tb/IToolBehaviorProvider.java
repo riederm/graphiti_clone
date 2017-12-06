@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2014 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@
  *    fvelasco - Bug 323349 - Enable external invocation of features
  *    mwenz - Bug 428068 - Automatically unselect a tool entry in palette like 'connection creation' after execution
  *    mwenz - Bug 434458 - Connections don't support Color decorators
+ *    mwenz - Bug 520392 - Hard coded error message when entering an empty string in direct editing
  * </copyright>
  *
  *******************************************************************************/
@@ -25,7 +26,9 @@ import java.awt.Polygon;
 
 import org.eclipse.graphiti.DiagramScrollingBehavior;
 import org.eclipse.graphiti.IExecutionInfo;
+import org.eclipse.graphiti.features.IDirectEditingFeature;
 import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.context.IDirectEditingContext;
 import org.eclipse.graphiti.features.context.IDoubleClickContext;
 import org.eclipse.graphiti.features.context.IPictogramElementContext;
 import org.eclipse.graphiti.features.context.ISingleClickContext;
@@ -466,4 +469,20 @@ public interface IToolBehaviorProvider {
 	 * @since 0.11
 	 */
 	public boolean isStayActiveAfterExecution(IConnectionCreationToolEntry connectionCreationToolEntry);
+
+	/**
+	 * Returns the title of the popup that appears when a user provides an
+	 * invalid input for direct editing. The default implementation returns 'Can
+	 * not edit value'.
+	 * 
+	 * @param feature
+	 *            The {@link IDirectEditingFeature} that was invoked
+	 * @param context
+	 *            The {@link IDirectEditingContext} that was used.
+	 * @return A {@link String} representing the title of the popup to present
+	 *         to the user.
+	 * @since 0.15
+	 */
+	public String getDirectEditingInvalidNotificationTitle(IDirectEditingFeature feature,
+			IDirectEditingContext context);
 }

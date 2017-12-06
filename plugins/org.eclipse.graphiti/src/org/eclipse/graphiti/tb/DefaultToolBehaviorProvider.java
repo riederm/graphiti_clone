@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2014 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@
  *    fvelasco - Bug 323349 - Enable external invocation of features
  *    mwenz - Bug 421754 - Absolute position of active Shape nested in inactive ContainerShape is calculated incorrectly
  *    mwenz - Bug 428068 - Automatically unselect a tool entry in palette like 'connection creation' after execution
+ *    mwenz - Bug 520392 - Hard coded error message when entering an empty string in direct editing
  * </copyright>
  *
  *******************************************************************************/
@@ -34,8 +35,10 @@ import org.eclipse.graphiti.datatypes.ILocation;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
 import org.eclipse.graphiti.features.ICreateFeature;
+import org.eclipse.graphiti.features.IDirectEditingFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.context.IDirectEditingContext;
 import org.eclipse.graphiti.features.context.IDoubleClickContext;
 import org.eclipse.graphiti.features.context.IPictogramElementContext;
 import org.eclipse.graphiti.features.context.ISingleClickContext;
@@ -587,5 +590,24 @@ public class DefaultToolBehaviorProvider implements IToolBehaviorProvider {
 	@Override
 	public boolean isStayActiveAfterExecution(IConnectionCreationToolEntry connectionCreationToolEntry) {
 		return true;
+	}
+
+	/**
+	 * Returns the title of the popup that appears when a user provides an
+	 * invalid input for direct editing. This default implementation returns
+	 * 'Can not edit value'.
+	 * 
+	 * @param feature
+	 *            The {@link IDirectEditingFeature} that was invoked
+	 * @param context
+	 *            The {@link IDirectEditingContext} that was used.
+	 * @return A {@link String} representing the title of the popup to present
+	 *         to the user.
+	 * @since 0.15
+	 */
+	@Override
+	public String getDirectEditingInvalidNotificationTitle(IDirectEditingFeature feature,
+			IDirectEditingContext context) {
+		return Messages.DefaultDirectEditPolicy_0_xmsg;
 	}
 }
