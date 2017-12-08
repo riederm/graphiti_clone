@@ -32,6 +32,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 public class TutorialEClassSection extends GFPropertySection implements ITabbedPropertyConstants {
 
 	private Text nameText;
+	private PictogramElement currentPe;
 
 	@Override
 	public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
@@ -60,7 +61,8 @@ public class TutorialEClassSection extends GFPropertySection implements ITabbedP
 	@Override
 	public void refresh() {
 		PictogramElement pe = getSelectedPictogramElement();
-		if (pe != null) {
+		if (pe != null && !pe.equals(currentPe)) {
+			currentPe = pe;
 			Object bo = Graphiti.getLinkService().getBusinessObjectForLinkedPictogramElement(pe);
 			// the filter assured, that it is a EClass
 			if (bo == null)
