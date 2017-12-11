@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2016 SAP AG.
+ * Copyright (c) 2005, 2017 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@
  *    mgorning - Bug 383512 - Moving (Resizing) Problem - Polyline/Polygon on first level
  *    pjpaulin - Bug 352120 - Now uses IDiagramContainerUI interface
  *    mwenz - Bug 496822 - NullPointerException in ShapeXYLayoutEditPolicy.getMoveConnectionDecoratorCommand
+ *    mwenz - Bug 528405 - ArithmeticException in ShapeXYLayoutEditPolicy.getSnapValue
  *
  * </copyright>
  *
@@ -543,10 +544,12 @@ public class ShapeXYLayoutEditPolicy extends XYLayoutEditPolicy {
 		boolean snapToGrid = (Boolean) viewer.getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);
 		if (gridVisible && snapToGrid) {
 			Dimension dimension = (Dimension) viewer.getProperty(SnapToGrid.PROPERTY_GRID_SPACING);
-			int snappedX = getSnapValue(ctx.getX(), dimension.width);
-			int snappedY = getSnapValue(ctx.getY(), dimension.height);
-			ctx.setX(snappedX);
-			ctx.setY(snappedY);
+			if (dimension.width != 0 && dimension.height != 0) {
+				int snappedX = getSnapValue(ctx.getX(), dimension.width);
+				int snappedY = getSnapValue(ctx.getY(), dimension.height);
+				ctx.setX(snappedX);
+				ctx.setY(snappedY);
+			}
 		}
 	}
 
