@@ -14,10 +14,10 @@
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<jboss-tycho-plugins-version>0.22.0</jboss-tycho-plugins-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform-site>http://download.eclipse.org/eclipse/updates/4.8milestones/S-4.8M2-201709132000/</platform-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20170912163609/repository/</orbit-site>
+		<platform-site>http://download.eclipse.org/eclipse/updates/4.8milestones/S-4.8M4-201712062000/</platform-site>
+		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20171130170529/repository/</orbit-site>
 		<gef-site>http://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/</gef-site>
-		<emf-site>http://download.eclipse.org/modeling/emf/emf/updates/2.13/</emf-site>
+		<emf-site>http://download.eclipse.org/modeling/emf/emf/updates/2.14milestones/</emf-site>
 		<emf-transactions-site>http://download.eclipse.org/modeling/emf/transaction/updates/releases/R201706061339/</emf-transactions-site>
 		<emf-validation-site>http://download.eclipse.org/modeling/emf/validation/updates/releases/R201706061352/</emf-validation-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/releases/2.6.0/</swtbot-site>
