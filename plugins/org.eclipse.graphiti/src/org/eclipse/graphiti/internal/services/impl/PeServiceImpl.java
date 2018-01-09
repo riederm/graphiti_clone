@@ -1,7 +1,7 @@
 /*******************************************************************************
  * <copyright>
  *
- * Copyright (c) 2005, 2017 SAP AG.
+ * Copyright (c) 2005, 2018 SAP AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@
  *    mwenz - Bug 509122 - NullPointerException in PeServiceImpl.getLocationInfo
  *    mwenz - Bug 510490 - NullPointerException in PeServiceImpl.getGaBoundsForAnchor
  *    mwenz - Bug 527192 - NullPointerException in PeServiceImpl.getRelativeToDiagramX
+ *    mwenz - Bug 529378 - PeServiceImpl.getConnectionMidpoint may return incorrect value when connection has no bendpoints
  *
  * </copyright>
  *
@@ -587,7 +588,7 @@ public final class PeServiceImpl implements IPeService {
 				java.awt.Rectangle parentRect = new java.awt.Rectangle(location.getX(), location.getY(), parentGa.getWidth(),
 						parentGa.getHeight());
 
-				java.awt.Point pointNextToStartAnchor = new java.awt.Point(startPoint.x, startPoint.y);
+				java.awt.Point pointNextToStartAnchor = new java.awt.Point(endPoint.x, endPoint.y);
 
 				if (c instanceof FreeFormConnection) {
 					FreeFormConnection ffc = (FreeFormConnection) c;
@@ -611,7 +612,7 @@ public final class PeServiceImpl implements IPeService {
 				java.awt.Rectangle parentRect = new java.awt.Rectangle(location.getX(), location.getY(), parentGa.getWidth(),
 						parentGa.getHeight());
 
-				java.awt.Point pointNextToEndAnchor = new java.awt.Point(endPoint.x, endPoint.y);
+				java.awt.Point pointNextToEndAnchor = new java.awt.Point(startPoint.x, startPoint.y);
 
 				if (c instanceof FreeFormConnection) {
 					FreeFormConnection ffc = (FreeFormConnection) c;
