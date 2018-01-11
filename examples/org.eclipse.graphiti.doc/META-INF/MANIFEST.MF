@@ -12,4 +12,4 @@ Require-Bundle: org.eclipse.help;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.graphiti.pattern;bundle-version="0.13.0",
  org.eclipse.graphiti.ui;bundle-version="0.13.0"
 Bundle-ClassPath: .
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
