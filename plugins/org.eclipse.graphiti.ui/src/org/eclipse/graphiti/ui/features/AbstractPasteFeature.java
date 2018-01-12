@@ -11,6 +11,7 @@
  *    SAP AG - initial API, implementation and documentation
  *    mwenz - Bug 375533 - Problems with copy&paste in the tutorial
  *    pjpaulin - Bug 352120 - Now uses IDiagramContainerUI interface
+ *    mwenz - Bug 511287 - FileNotFoundException below AbstractPasteFeature.isResolvable
  *
  * </copyright>
  *
@@ -19,6 +20,8 @@
  * Created on 06.07.2005
  */
 package org.eclipse.graphiti.ui.features;
+
+import java.io.FileNotFoundException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -146,7 +149,16 @@ public abstract class AbstractPasteFeature extends AbstractFeature implements IP
 		// ResourceSet or not
 		EObject resolved = getDiagramBehavior().getEditingDomain().getResourceSet().getEObject(uri, false);
 		if (resolved == null) {
-			resolved = getDiagramBehavior().getEditingDomain().getResourceSet().getEObject(uri, true);
+			try {
+				resolved = getDiagramBehavior().getEditingDomain().getResourceSet().getEObject(uri, true);
+			} catch (Exception e) {
+				if (e instanceof FileNotFoundException) {
+					// Bug 511287 - file not resolvable means object not
+					// resolvable
+					return false;
+				}
+				throw e;
+			}
 		}
 		return resolved != null;
 	}
