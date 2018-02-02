@@ -1,69 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component id="org.eclipse.graphiti" version="2">
-    <resource path="META-INF/MANIFEST.MF" type="org.eclipse.graphiti.platform.IDiagramEditor">
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="305324134">
+    <resource path="src/org/eclipse/graphiti/features/context/impl/DeleteContext.java" type="org.eclipse.graphiti.features.context.impl.DeleteContext">
+        <filter id="576720909">
             <message_arguments>
-                <message_argument value="org.eclipse.graphiti.platform.IDiagramEditor"/>
-                <message_argument value="org.eclipse.graphiti_0.12.0"/>
+                <message_argument value="PictogramElementContext"/>
+                <message_argument value="DeleteContext"/>
             </message_arguments>
         </filter>
     </resource>
-    <resource path="src/org/eclipse/graphiti/dt/AbstractDiagramTypeProvider.java" type="org.eclipse.graphiti.dt.AbstractDiagramTypeProvider">
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="338792546">
+    <resource path="src/org/eclipse/graphiti/features/context/impl/DirectEditingContext.java" type="org.eclipse.graphiti.features.context.impl.DirectEditingContext">
+        <filter id="576720909">
             <message_arguments>
-                <message_argument value="org.eclipse.graphiti.dt.AbstractDiagramTypeProvider"/>
-                <message_argument value="getDiagramEditor()"/>
-            </message_arguments>
-        </filter>
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="338792546">
-            <message_arguments>
-                <message_argument value="org.eclipse.graphiti.dt.AbstractDiagramTypeProvider"/>
-                <message_argument value="init(Diagram, IDiagramEditor)"/>
+                <message_argument value="DetailedPictogramElementContext"/>
+                <message_argument value="DirectEditingContext"/>
             </message_arguments>
         </filter>
     </resource>
-    <resource path="src/org/eclipse/graphiti/dt/IDiagramTypeProvider.java" type="org.eclipse.graphiti.dt.IDiagramTypeProvider">
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="405901410">
+    <resource path="src/org/eclipse/graphiti/features/context/impl/LayoutContext.java" type="org.eclipse.graphiti.features.context.impl.LayoutContext">
+        <filter id="576720909">
             <message_arguments>
-                <message_argument value="org.eclipse.graphiti.dt.IDiagramTypeProvider"/>
-                <message_argument value="getDiagramEditor()"/>
-            </message_arguments>
-        </filter>
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="405901410">
-            <message_arguments>
-                <message_argument value="org.eclipse.graphiti.dt.IDiagramTypeProvider"/>
-                <message_argument value="init(Diagram, IDiagramEditor)"/>
+                <message_argument value="PictogramElementContext"/>
+                <message_argument value="LayoutContext"/>
             </message_arguments>
         </filter>
     </resource>
-    <resource path="src/org/eclipse/graphiti/features/impl/AbstractFeature.java" type="org.eclipse.graphiti.features.impl.AbstractFeature">
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="338792546">
+    <resource path="src/org/eclipse/graphiti/features/context/impl/RemoveContext.java" type="org.eclipse.graphiti.features.context.impl.RemoveContext">
+        <filter id="576720909">
             <message_arguments>
-                <message_argument value="org.eclipse.graphiti.features.impl.AbstractFeature"/>
-                <message_argument value="getDiagramEditor()"/>
+                <message_argument value="PictogramElementContext"/>
+                <message_argument value="RemoveContext"/>
             </message_arguments>
         </filter>
     </resource>
-    <resource path="src/org/eclipse/graphiti/platform/IDiagramContainer.java" type="org.eclipse.graphiti.platform.IDiagramContainer">
-        <filter comment="Bug 429532 - Remove deprecations in 0.12.0" id="404791350">
+    <resource path="src/org/eclipse/graphiti/features/context/impl/UpdateContext.java" type="org.eclipse.graphiti.features.context.impl.UpdateContext">
+        <filter id="576720909">
             <message_arguments>
-                <message_argument value="org.eclipse.graphiti.platform.IDiagramContainer"/>
-            </message_arguments>
-        </filter>
-    </resource>
-    <resource path="src/org/eclipse/graphiti/services/IGaService.java" type="org.eclipse.graphiti.services.IGaService">
-        <filter comment="Bug 429532 - [0.12] Remove deprecated stuff" id="405901410">
-            <message_arguments>
-                <message_argument value="org.eclipse.graphiti.services.IGaService"/>
-                <message_argument value="getAngle(AbstractText, boolean)"/>
-            </message_arguments>
-        </filter>
-    </resource>
-    <resource path="src/org/eclipse/graphiti/services/impl/GaServiceImpl.java" type="org.eclipse.graphiti.services.impl.GaServiceImpl">
-        <filter comment="Bug 429532 - [0.12] Remove deprecated stuff" id="338792546">
-            <message_arguments>
-                <message_argument value="org.eclipse.graphiti.services.impl.GaServiceImpl"/>
-                <message_argument value="getAngle(AbstractText, boolean)"/>
+                <message_argument value="PictogramElementContext"/>
+                <message_argument value="UpdateContext"/>
             </message_arguments>
         </filter>
     </resource>

@@ -126,7 +126,7 @@ public class FeatureParametersTest extends GFAbstractTestCase {
 
 		};
 
-		IDiagramContainer diagramEditor = new IDiagramContainer() {
+		new IDiagramContainer() {
 			public void setPictogramElementsForSelection(PictogramElement[] pictogramElements) {
 			}
 
@@ -152,10 +152,6 @@ public class FeatureParametersTest extends GFAbstractTestCase {
 
 			public IDiagramTypeProvider getDiagramTypeProvider() {
 				return null;
-			}
-
-			public boolean isAlive() {
-				return false;
 			}
 
 			public void doSave(IProgressMonitor monitor) {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.graphiti.tests" version="2">
+    <resource path="src/org/eclipse/graphiti/tests/cases/FeatureParametersTest.java" type="org.eclipse.graphiti.tests.cases.FeatureParametersTest">
+        <filter id="574664731">
+            <message_arguments>
+                <message_argument value="org.eclipse.graphiti.tests.cases.FeatureParametersTest.testContextPropertiesPassedToAddFeature()"/>
+                <message_argument value="IDiagramBehavior"/>
+            </message_arguments>
+        </filter>
+        <filter id="574664731">
+            <message_arguments>
+                <message_argument value="org.eclipse.graphiti.tests.cases.FeatureParametersTest.testContextPropertiesPassedToAddFeature()"/>
+                <message_argument value="IDiagramContainer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

@@ -25,7 +25,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 import org.eclipse.graphiti.IExecutionInfo;
-import org.eclipse.graphiti.IName;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.examples.common.IExampleImageConstants;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
@@ -92,7 +91,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 /**
  * The Class SketchToolBehavior.
  */
-public class SketchToolBehavior extends DefaultToolBehaviorProvider implements IName {
+public class SketchToolBehavior extends DefaultToolBehaviorProvider {
 
 	private Dictionary<PictogramElement, List<IDecorator>> decorators = new Hashtable<PictogramElement, List<IDecorator>>();
 
@@ -590,10 +589,6 @@ public class SketchToolBehavior extends DefaultToolBehaviorProvider implements I
 			}
 		}
 		return super.getContentArea(cs);
-	}
-
-	public String getName() {
-		return "Edit Mode";
 	}
 
 	@Override

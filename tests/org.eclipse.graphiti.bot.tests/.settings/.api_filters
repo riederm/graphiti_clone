@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.graphiti.bot.tests" version="2">
+    <resource path="src/org/eclipse/graphiti/bot/tests/GFPackageTests.java" type="org.eclipse.graphiti.bot.tests.GFPackageTests">
+        <filter id="571514905">
+            <message_arguments>
+                <message_argument value="MyImageDataMapping"/>
+                <message_argument value="org.eclipse.graphiti.bot.tests.GFPackageTests.testMappingData()"/>
+                <message_argument value="ImageDataMapping"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>
