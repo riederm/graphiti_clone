@@ -18,6 +18,8 @@
  *******************************************************************************/
 package org.eclipse.graphiti.dt;
 
+import javax.inject.Inject;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.internal.services.GraphitiInternal;
@@ -37,6 +39,7 @@ import org.eclipse.graphiti.tb.IToolBehaviorProvider;
  */
 public abstract class AbstractDiagramTypeProvider extends AbstractExtension implements IDiagramTypeProvider {
 
+
 	private IToolBehaviorProvider[] availableToolBehaviorProviders = null;
 
 	private Diagram diagram;
@@ -45,11 +48,15 @@ public abstract class AbstractDiagramTypeProvider extends AbstractExtension impl
 
 	private IFeatureProvider featureProvider;
 
+	@Inject
 	private INotificationService notificationService;
 
 	private int currentToolBehaviorIndex = 0;
 
 	private String contextId;
+
+	@Inject
+	private IToolBehaviorProvider toolbehaviorProvider;
 
 	/**
 	 * Creates a new {@link AbstractDiagramTypeProvider}.
@@ -65,9 +72,16 @@ public abstract class AbstractDiagramTypeProvider extends AbstractExtension impl
 	 */
 	public IToolBehaviorProvider[] getAvailableToolBehaviorProviders() {
 		if (this.availableToolBehaviorProviders == null) {
-			this.availableToolBehaviorProviders = new IToolBehaviorProvider[] { new DefaultToolBehaviorProvider(this) };
+			this.availableToolBehaviorProviders = new IToolBehaviorProvider[] { getDefaultToolBehaviourProvider() };
 		}
 		return this.availableToolBehaviorProviders;
+	}
+
+	private IToolBehaviorProvider getDefaultToolBehaviourProvider() {
+		if (toolbehaviorProvider == null) {
+			toolbehaviorProvider = new DefaultToolBehaviorProvider(this);
+		}
+		return toolbehaviorProvider;
 	}
 
 	public IToolBehaviorProvider getCurrentToolBehaviorProvider() {

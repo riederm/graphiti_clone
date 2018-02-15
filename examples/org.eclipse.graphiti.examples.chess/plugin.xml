@@ -13,7 +13,7 @@
    <extension
          point="org.eclipse.graphiti.ui.diagramTypeProviders">
       <diagramTypeProvider
-            class="org.eclipse.graphiti.examples.chess.diagram.ChessDiagramTypeProvider"
+            class="org.eclipse.graphiti.examples.chess.ChessExecutableFactory:org.eclipse.graphiti.dt.IDiagramTypeProvider"
             description="This is the editor for the Graphiti chess example"
             id="org.eclipse.graphiti.examples.chess.ChessDiagramTypeProvider"
             name="Graphiti Chess Example Editor">

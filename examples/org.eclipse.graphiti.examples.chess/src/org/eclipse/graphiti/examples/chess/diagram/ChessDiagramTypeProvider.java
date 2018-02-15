@@ -15,22 +15,22 @@
 package org.eclipse.graphiti.examples.chess.diagram;
 
 import org.eclipse.graphiti.dt.AbstractDiagramTypeProvider;
-import org.eclipse.graphiti.tb.IToolBehaviorProvider;
 
 public class ChessDiagramTypeProvider extends AbstractDiagramTypeProvider {
 
-	private IToolBehaviorProvider[] toolBehaviorProviders;
+	// private IToolBehaviorProvider[] toolBehaviorProviders;
 
 	public ChessDiagramTypeProvider() {
 		super();
 		setFeatureProvider(new ChessFeatureProvider(this));
 	}
 
-	@Override
-	public IToolBehaviorProvider[] getAvailableToolBehaviorProviders() {
-		if (toolBehaviorProviders == null) {
-			toolBehaviorProviders = new IToolBehaviorProvider[] { new ChessToolBehaviorProvider(this) };
-		}
-		return toolBehaviorProviders;
-	}
+	// @Override
+	// public IToolBehaviorProvider[] getAvailableToolBehaviorProviders() {
+	// if (toolBehaviorProviders == null) {
+	// toolBehaviorProviders = new IToolBehaviorProvider[] { new
+	// ChessToolBehaviorProvider(this) };
+	// }
+	// return toolBehaviorProviders;
+	// }
 }

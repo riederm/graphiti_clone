@@ -17,6 +17,8 @@ package org.eclipse.graphiti.notification;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.impl.UpdateContext;
@@ -35,6 +37,7 @@ public class DefaultNotificationService implements INotificationService {
 	 * @param diagramTypeProvider
 	 *            the diagram type provider
 	 */
+	@Inject
 	public DefaultNotificationService(IDiagramTypeProvider diagramTypeProvider) {
 		this.diagramTypeProvider = diagramTypeProvider;
 	}

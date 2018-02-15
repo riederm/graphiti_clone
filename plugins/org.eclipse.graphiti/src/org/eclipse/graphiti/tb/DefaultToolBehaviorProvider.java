@@ -27,6 +27,8 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.graphiti.DiagramScrollingBehavior;
@@ -121,6 +123,7 @@ public class DefaultToolBehaviorProvider implements IToolBehaviorProvider {
 	 * @param diagramTypeProvider
 	 *            the diagram type provider
 	 */
+	@Inject
 	public DefaultToolBehaviorProvider(IDiagramTypeProvider diagramTypeProvider) {
 		super();
 		setDiagramTypeProvider(diagramTypeProvider);

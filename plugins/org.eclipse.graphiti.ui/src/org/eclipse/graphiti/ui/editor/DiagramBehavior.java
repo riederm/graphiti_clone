@@ -33,6 +33,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.AssertionFailedException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -189,6 +191,7 @@ public class DiagramBehavior implements IDiagramBehaviorUI {
 
 	private ResourceManager resourceManager = null;
 
+	@Inject
 	public DiagramBehavior(IDiagramContainerUI diagramContainer) {
 		super();
 		this.setDiagramContainer(diagramContainer);

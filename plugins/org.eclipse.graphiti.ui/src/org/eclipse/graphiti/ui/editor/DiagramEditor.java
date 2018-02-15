@@ -49,6 +49,8 @@ import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -139,7 +141,7 @@ public class DiagramEditor extends GraphicalEditorWithFlyoutPalette implements I
 		ITabbedPropertySheetPageContributor, IEditingDomainProvider {
 
 	private String contributorId;
-	private DiagramBehavior diagramBehavior;
+	private @Inject DiagramBehavior diagramBehavior;
 
 	/**
 	 * The ID of the {@link DiagramEditor} as it is registered with the
@@ -248,7 +250,10 @@ public class DiagramEditor extends GraphicalEditorWithFlyoutPalette implements I
 	 * @since 0.10
 	 */
 	protected DiagramBehavior createDiagramBehavior() {
-		return new DiagramBehavior(this);
+		if (diagramBehavior == null) {
+			return new DiagramBehavior(this);
+		}
+		return diagramBehavior;
 	}
 
 	/**
